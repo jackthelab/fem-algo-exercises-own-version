@@ -1,0 +1,23 @@
+{
+  "name": "fem-algo-exercises-own-version",
+  "version": "1.0.0",
+  "description": "This is supplementary to Comp Sci course on Frontend Masters",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackthelab/fem-algo-exercises-own-version.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackthelab/fem-algo-exercises-own-version/issues"
+  },
+  "homepage": "https://github.com/jackthelab/fem-algo-exercises-own-version#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
