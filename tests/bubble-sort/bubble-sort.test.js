@@ -1,57 +1,34 @@
 const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
 const expectedSort = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// OWN Solution #1
-function bubblesortOne(nums) {
-  for (let i = 0; i < nums.length - 1; i++) {
-    let a = nums[i];
-    let b = nums[i + 1];
+function bubblesort(nums) {
+  // check if swapped in last iteration
+  let swapped;
 
-    if (a > b) {
-      [nums[i], nums[i + 1]] = [b, a];
-      for (let n = i - 1; n >= 0; n--) {
-        if (nums[n] <= nums[n + 1]) break;
-        let c = nums[n];
-        let d = nums[n + 1];
-        [nums[n], nums[n + 1]] = [d, c];
+  // last index
+  let finalIndex = nums.length - 1;
+
+  // sort through nums array -- only repeat if a swap occured
+  do {
+    swapped = false; // set swapped to false since we haven't swapped yet in this round
+    for (let i = 0; i < finalIndex; i++) {
+      const x = nums[i];
+      const y = nums[i + 1];
+
+      if(x > y) {
+        [nums[i], nums[i+1]] = [y, x]; // swap
+        swapped = true; // show swap happened in this round -- would like to do this only once;
       }
     }
-  }
+    finalIndex--; // remove last items since already sorted
+  } while (swapped);
+
   return nums;
 }
 
-test('bubble sort one', () => {
-  const sortedNums = bubblesortOne(nums);
-  expect(sortedNums).toEqual(expectedSort);
-});
-
-// OWN Solution #2
-function bubblesortTwo(nums) {
-  for (let i = 0; i < nums.length; i++) {
-    let a;
-    let b;
-
-    if (nums[i + 1] && nums[i] > nums[i + 1]) {
-      // move right
-      for (let n = i; n < nums.length - 1; n++) {
-        if (nums[n] <= nums[n + 1]) break;
-        [a, b] = [nums[n], nums[n + 1]];
-        [nums[n], nums[n + 1]] = [b, a];
-      }
-    }
-    if (nums[i - 1] && nums[i] < nums[i - 1]) {
-      // move left
-      for (let n = i; n > 0; n--) {
-        if (nums[n] >= nums[n - 1]) break;
-        [a, b] = [nums[n - 1], nums[n]];
-        [nums[n - 1], nums[n]] = [b, a];
-      }
-    }
-  }
-  return nums;
-}
-
-test('bubble sort two', () => {
-  const sortedNums = bubblesortTwo(nums);
-  expect(sortedNums).toEqual(expectedSort);
+describe('bubble sort tests', () => {
+  it('should sort nums correctly', () => {
+    const sortedNums = bubblesort(nums);
+    expect(sortedNums).toEqual(expectedSort);
+  })
 });
