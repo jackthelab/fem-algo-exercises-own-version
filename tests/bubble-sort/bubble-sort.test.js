@@ -26,7 +26,7 @@ function bubblesort(nums) {
   return nums;
 }
 
-describe('bubble sort tests', () => {
+describe('bubble sort own solutions tests', () => {
   it('should sort nums correctly', () => {
     const sortedNums = bubblesort(nums);
     expect(sortedNums).toEqual(expectedSort);
