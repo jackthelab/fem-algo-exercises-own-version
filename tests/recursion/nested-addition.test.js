@@ -23,7 +23,7 @@ function nestedAdd(array) {
   return runningSum;
 }
 
-describe('my nested arrays recursion solution tests', () => {
+describe('my nested addition recursion solution tests', () => {
   it("nested arrays addition", () => {
     expect(nestedAdd([1, 2, 3])).toEqual(6);
     expect(nestedAdd([1, [2], 3])).toEqual(6);
