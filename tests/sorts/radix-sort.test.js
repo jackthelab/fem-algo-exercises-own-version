@@ -10,9 +10,8 @@ function radixSort(array) {
   // code goes here
 }
 
-// unit tests
-// do not modify the below code
-describe.skip("radix sort", function () {
+describe.skip("radix sort", () => {
+
   it("should sort correctly", () => {
     const nums = [
       20,
@@ -62,6 +61,7 @@ describe.skip("radix sort", function () {
       3001
     ]);
   });
+
   it("should sort 99 random numbers correctly", () => {
     const fill = 99;
     const nums = new Array(fill)
@@ -70,4 +70,5 @@ describe.skip("radix sort", function () {
     const ans = radixSort(nums);
     expect(ans).toEqual(nums.sort());
   });
+
 });

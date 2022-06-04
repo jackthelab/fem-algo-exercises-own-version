@@ -14,11 +14,13 @@ function quickSort(nums) {
   // code goes here
 }
 
-// unit tests
-// do not modify the below code
-test.skip("quickSort", function () {
-  const input = [10, 8, 2, 1, 6, 3, 9, 4, 7, 5];
-  const answer = quickSort(input);
+describe.skip('quick sort own solutions tests', () => {
 
-  expect(answer).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  it("quickSort", function () {
+    const input = [10, 8, 2, 1, 6, 3, 9, 4, 7, 5];
+    const answer = quickSort(input);
+
+    expect(answer).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  });
+
 });
