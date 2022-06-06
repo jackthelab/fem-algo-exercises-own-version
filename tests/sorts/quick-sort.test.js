@@ -12,6 +12,7 @@ function quickSort(nums) {
 
   // find the pivot -- traditional method here
   // make sure to remove from array too or else will break call stack -- think it's an infinite loop?
+  // or adjust for loop below to not include this pivot
   const pivot = nums.pop();
 
   // arrays for smaller & larger items
