@@ -29,8 +29,7 @@ class ArrayList {
 
   pop() {
     const value = this[this.length - 1];
-    delete this[this.length - 1];
-    this.length--;
+    this.delete(this.length - 1);
     return value;
   }
 
