@@ -23,66 +23,11 @@
 */
 
 class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-  push(value) {
-    const node = new Node(value);
-    this.length++;
-    if (!this.head) {
-      this.head = node;
-    } else {
-      this.tail.next = node;
-    }
-    this.tail = node;
-  }
-  pop() {
-    return this.delete(this.length - 1);
-  }
-  _find(index) {
-    if (index >= this.length) return null;
-    let current = this.head;
-    for (let i = 0; i < index; i++) {
-      current = current.next;
-    }
-
-    return current;
-  }
-  get(index) {
-    const node = this._find(index);
-    if (!node) return void 0;
-    return node.value;
-  }
-  delete(index) {
-    if (index === 0) {
-      const head = this.head;
-      if (head) {
-        this.head = head.next;
-      } else {
-        this.head = null;
-        this.tail = null;
-      }
-      this.length--;
-      return head.value;
-    }
-
-    const node = this._find(index - 1);
-    const excise = node.next;
-    if (!excise) return null;
-    node.next = excise.next;
-    if (!node.next) this.tail = node.next;
-    this.length--;
-    return excise.value;
-  }
+  // code here
 }
 
 class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
+  // code here
 }
 
 // unit tests
@@ -98,16 +43,16 @@ describe("LinkedList", function () {
     list = new LinkedList();
   });
 
-  test("constructor", () => {
+  it("constructor", () => {
     expect(list).toEqual(expect.any(LinkedList));
   });
 
-  test("push", () => {
+  it("push", () => {
     abcRange(26).map((character) => list.push(character));
     expect(list.length).toEqual(26);
   });
 
-  test("pop", () => {
+  it("pop", () => {
     abcRange(13).map((character) => list.push(character));
     expect(list.length).toEqual(13);
     range(10).map(() => list.pop());
@@ -115,7 +60,7 @@ describe("LinkedList", function () {
     expect(list.pop()).toEqual("c");
   });
 
-  test("get", () => {
+  it("get", () => {
     list.push("first");
     expect(list.get(0)).toEqual("first");
     list.push("second");
@@ -129,7 +74,7 @@ describe("LinkedList", function () {
     expect(list.get(list.length - 1)).toEqual("y");
   });
 
-  test("delete", () => {
+  it("delete", () => {
     abcRange(26).map((character) => list.push(character));
     list.delete(13);
     expect(list.length).toEqual(25);
