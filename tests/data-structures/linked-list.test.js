@@ -23,15 +23,110 @@
 */
 
 class LinkedList {
-  // code here
+  
+  constructor() {
+    this.head = null
+    this.length = 0
+  }
+
+  push(value) {
+    const newNode = new Node(value);
+
+    if (this.head === null) {
+      this.head = newNode;
+    } else {
+      let baseNode = this.head;
+      while (baseNode.next !== null) {
+        baseNode = baseNode.next;
+      }
+
+      baseNode.setNext(newNode);
+    }
+
+    this.length++;
+
+  }
+
+  pop() {
+    let resp;
+
+    if (this.head === null) return undefined;
+    if (this.head.next === null) {
+      resp = this.head;
+      this.length--;
+      this.head = null;
+      return resp;
+    }
+
+    let base = this.head;
+    // get next node in linked list
+    let nextNode = base.next;
+    // while next is not the last node
+    while(nextNode.next) {
+      base = nextNode;
+      nextNode = nextNode.next;
+    }
+
+    // sever nextNode from end of list -- no pointer means it is gone
+    base.setNext(null);
+    resp = nextNode.value;
+    this.length--;
+
+    return resp;
+  }
+
+  getNode(index) {
+    if (index >= this.length) return undefined;
+
+    let resp = this.head;
+    let i = 0;
+    while (i < index) {
+      resp = resp.next;
+      i++;
+    }
+
+    return resp;
+  }
+
+  get(index) {
+    
+    let resp = this.getNode(index) ? this.getNode(index).value : undefined;
+    return resp;
+
+  }
+  
+  delete(index) {
+    if (index >= this.length) return undefined;
+    if (index === 0) {
+      this.head = this.head.next;
+      this.length--;
+      return;
+    }
+
+    const prev = this.getNode(index - 1);
+    const target = this.getNode(index);
+    const next = target.next ? target.next : null;
+
+    prev.setNext(next);
+    this.length--;
+
+  }
+
 }
 
 class Node {
-  // code here
+  
+  constructor(value) {
+    this.value = value
+    this.next = null
+  }
+
+  setNext(next) {
+    this.next = next
+  }
+
 }
 
-// unit tests
-// do not modify the below code
 describe("LinkedList", function () {
   const range = (length) =>
     Array.apply(null, { length: length }).map(Number.call, Number);
