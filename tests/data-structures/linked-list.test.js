@@ -24,6 +24,7 @@
 
 class LinkedList {
   
+  // would probably be better to include tail too
   constructor() {
     this.head = null
     this.length = 0
